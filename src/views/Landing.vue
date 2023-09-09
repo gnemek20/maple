@@ -13,7 +13,7 @@ export default {
     return {
       timeEvent: null,
       getTimeUrl: 'https://port-0-mapleback-jvvy2blmc9o5ey.sel5.cloudtype.app/getTime',
-      time: "00:00:00"
+      time: ''
     }
   },
   mounted() {
@@ -25,10 +25,10 @@ export default {
     clearInterval(this.timeEvent);
   },
   methods: {
-    checkTime() {
+    async checkTime() {
       let date = '';
 
-      const { status, data } = axios.get(this.getTimeUrl);
+      const { status, data } = await axios.get(this.getTimeUrl);
       if (status === 200) {
         console.log(data)
         date = data.toString().split(' ')[4];
