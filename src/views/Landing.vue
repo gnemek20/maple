@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -26,10 +28,11 @@ export default {
     checkTime() {
       let date = '';
 
-      fetch(this.getTimeUrl, { method: 'GET' }).then((result) => {
-        console.log(result.data)
-        date = result.data.toString().split(' ')[4];
-      });
+      const { status, data } = axios.get(this.getTimeUrl);
+      if (status === 200) {
+        console.log(data)
+        date = data.toString().split(' ')[4];
+      }
 
       this.time = date;
     },
