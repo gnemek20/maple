@@ -19,7 +19,7 @@ export default {
   mounted() {
     this.timeEvent = setInterval(() => {
       this.checkTime()
-    }, 100);
+    }, 500);
   },
   beforeDestroy() {
     clearInterval(this.timeEvent);
