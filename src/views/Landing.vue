@@ -18,7 +18,7 @@ export default {
     //   this.checkTime()
     // }, 100);
 
-    const mapleRank = 'https://maplestory.nexon.com/N23Ranking/World/Total';
+    const mapleRank = 'https://developers.nexon.com/Maplestory';
     const xmlHttp = new XMLHttpRequest();
     xmlHttp.open('HEAD', mapleRank, false);
     xmlHttp.setRequestHeader('Content-Type', 'text/html');
