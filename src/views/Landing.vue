@@ -24,13 +24,11 @@ export default {
   },
   methods: {
     checkTime() {
-      // const date = new Date();
-      // this.time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
       let date = '';
 
       fetch(this.getTimeUrl, { method: 'GET' }).then((result) => {
-        console.log(result)
-        date = result.toString().split(' ')[4];
+        console.log(result.data)
+        date = result.data.toString().split(' ')[4];
       });
 
       this.time = date;
