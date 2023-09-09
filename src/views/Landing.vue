@@ -13,13 +13,14 @@ export default {
     return {
       timeEvent: null,
       getTimeUrl: 'https://port-0-mapleback-jvvy2blmc9o5ey.sel5.cloudtype.app/getTime',
+      // getTimeUrl: 'http://127.0.0.1:3000',
       time: ''
     }
   },
-  mounted() {
+  async mounted() {
     this.timeEvent = setInterval(() => {
       this.checkTime()
-    }, 500);
+    }, 100);
   },
   beforeDestroy() {
     clearInterval(this.timeEvent);
@@ -30,8 +31,11 @@ export default {
 
       const { status, data } = await axios.get(this.getTimeUrl);
       if (status === 200) {
-        console.log(data)
         date = data.toString().split(' ')[4];
+      }
+      else {
+        clearInterval(this.timeEvent);
+        return;
       }
 
       this.time = date;
