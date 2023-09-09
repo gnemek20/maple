@@ -14,17 +14,12 @@ export default {
     }
   },
   mounted() {
-    // this.timeEvent = setInterval(() => {
-    //   this.checkTime()
-    // }, 100);
+    this.timeEvent = setInterval(() => {
+      this.checkTime()
+    }, 100);
 
-    const mapleRank = 'https://developers.nexon.com/Maplestory';
-    const xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('HEAD', mapleRank, false);
-    xmlHttp.setRequestHeader('Content-Type', 'text/html');
-    xmlHttp.send('');
-
-    console.log(xmlHttp.getResponseHeader("Date"));
+    const back = 'https://port-0-mapleback-jvvy2blmc9o5ey.sel5.cloudtype.app/';
+    fetch(back);
   },
   beforeDestroy() {
     clearInterval(this.timeEvent);
